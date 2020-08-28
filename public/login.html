@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+        <script src="d3.js"></script>
+        <script src="script.js"></script>
+        <script src="main-script.js"></script>
+    <title>Log In</title>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <nav>
+                <div class="nav-links">
+                    <ul>
+                       <h2>Welcome to BSE18 Docket </h2> 
+                    </ul>          
+                </div>
+                <div class="date">
+                    <script>
+                        var currentDate = new Date();
+                        var month = currentDate.getMonth();
+                        var day = currentDate.getDate();
+                        var year = currentDate.getUTCFullYear();
+                        var fullDate = day + "." + month + "." + year;
+                        document.write(fullDate);
+                    </script>
+                </div>
+                <div class="logo">
+                    <h1>Start page</h1>
+                </div>
+            </nav>
+        </div>
+        <div id="showcase">
+            <div id="form">
+                    <div>
+                        <label><h3>Username</h3></label>
+                        <input id="user" type="text" name="user" placeholder="Enter username">
+                    </div>
+                    <br>
+                    <div>
+                        <label><h3>Password</h3></label>
+                        <input type="text" name="password" placeholder="Enter password">
+                    </div>
+                    <br>
+                    <input type="button" value="Log in" onclick="login()">
+             </div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright &copy; 2020 BSE18 Docket</p>
+    </footer> 
+</body>
+</html>

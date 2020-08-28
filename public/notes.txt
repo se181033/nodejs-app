@@ -1,0 +1,87 @@
+TODOs
+1. Build the Project
+    - creating the folder
+    - adding files
+    - connecting files
+
+2. Navbar
+    - 5 links
+    - date
+    - name
+
+3. Pages
+    - Meetings
+        - name
+        - date
+        - links
+            - Home
+            - Tasks
+            - Clients
+            - log out
+        - content
+            -list of all Meetings
+    - Clients
+        - name
+        - date
+        - links
+            - Home
+            - Meetings
+            - Tasks
+            - log out
+        - content
+            -list of all my Clients
+    - Tasks
+        - name
+        - date
+        - links
+            - Home
+            - Meetings
+            - Clients
+            - log out
+        - content
+            -list of all my tasks
+    - Home
+        - name
+        - date
+        - links
+            - Tasks
+            - Meetings
+            - Clients
+            - log out
+        - content
+            -tasks table
+            - img
+            - timeline
+
+    - Log on
+        - name
+        - date
+        - links
+            - log in
+        - content
+            - username input field 
+            - password input files
+- server data
+    - script
+    - code defining
+
+Problems!
+1. Data
+    - getting data with script
+
+2. Reading data in Azure web App.
+    - test with script.js shows no data from Azurewebsite
+
+3. Log in site
+    - as start Pages
+    - submit to lead to home site not working on Azurewebsite
+
+
+TODOs 26.08.2020
+1. Data fill up in SQL dataserver
+
+2. Calling data in script
+
+3. Login Pages
+
+4. Fine tunning CSS

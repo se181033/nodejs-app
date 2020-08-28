@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" type="text/css">
+        <script src="main-script.js" type="javascript"></script>
+        <script src="d3.js"></script>
+        <script src="script.js"></script>
+    <title>Meetings</title>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <nav>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="meetings.html">Meetings</a></li>
+                        <li><a href="clients.html">Clients</a></li>
+                        <li><a href="myTasks.html">Tasks</a></li>
+                        <li><a href="login.html">Log out</a></li>
+                    </ul>          
+                </div>
+                <div class="date">
+                    <script>
+                        var currentDate = new Date();
+                        var month = currentDate.getMonth();
+                        var day = currentDate.getDate();
+                        var year = currentDate.getUTCFullYear();
+                        var fullDate = day + "." + month + "." + year;
+                        document.write(fullDate);
+                    </script>
+                </div>
+                <div class="logo">
+                    <h1>Meetings</h1>
+                </div>
+            </nav>
+        </div>
+        <div id="showcase"></div>  
+        <div class="content-wrapper">
+            <div id="rectangle"></div>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright &copy; 2020 BSE18 Docket</p>
+    </footer> 
+</body>
+</html>
