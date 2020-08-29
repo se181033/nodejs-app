@@ -1,15 +1,8 @@
-var dataLink = "http://127.0.0.1:3000/getMeeting";
-var _data;
-// Call interval function for periodic 
-/*var intervall = setInterval(function() {
-   getData();
-}, 3000); */
+var _data = [];
+var _appointments = [];
 
-getData();
-
-function login(){
-    console.log(document.getElementById("user").value);
-    d3.json('http://127.0.0.1:3000/getMeetings', {
+function getnextMeeting(){
+    d3.json('http://127.0.0.1:3000/nextMeeting', {
       method:"POST",
       body: JSON.stringify({
         user: document.getElementById("user").value
@@ -18,45 +11,101 @@ function login(){
         "Content-type": "application/json; charset=UTF-8"
       }
     })
-    .then(function(data){
-         console.log(data);
+    .then(function(_data){
+        console.log(_data);
         
+        let htmlTag = d3.select('#dailyData');
+        htmlTag.select("#dataTable").remove();
+        var headlineData = ["Next case starts in","Priority","Client","Case Type", "Preparation", "court","Approx. Duration"];
+        var table = d3.select("#dailyData").append("table").attr("id","dataTable");
+        var headLine = table.append("thead").append("tr");
+        headLine.selectAll("th").data(headlineData)//supplies data
+              .enter()
+              .append("th")
+              .attr("class","valDescription")// set class for CSS
+              .text(function(d){return d;});//Add text
+        var tbody = table.selectAll("tbody").data(_data).enter().append("tbody").attr("class", "features");
+        var dataLine = tbody.append("tr");
+        dataLine.append("td").attr("class","features one").text(function(d){return d["priority"];});
+        dataLine.append("td").attr("class","features two").text(function(d){return d["time"];});
+        dataLine.append("td").attr("class","features three").text(function(d){return d["client"];});
+        dataLine.append("td").attr("class","features four").text(function(d){return d["type"];});
+        dataLine.append("td").attr("class","features five").text(function(d){return d["preparation_done"];});
+        dataLine.append("td").attr("class","features six").text(function(d){return d["place"];});
+        dataLine.append("td").attr("class","features seven").text(function(d){return d["workload"];}); 
     });
+  }
+
+function getMeetings(){
+  d3.json('http://127.0.0.1:3000/getMeetings', {
+    method:"POST",
+    body: JSON.stringify({
+      user: document.getElementById("user").value
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(function(data){
+    _data = data;
+       console.log(data);
+       let htmlTag = d3.select('#meetingsData');
+       htmlTag.select("#dataTable").remove();
+       var table = d3.select("#meetingsData").append("table").attr("id","dataTable");
+       var headlineData = ['Date','Time','Priority'];
+       var headLine = table.append("thead").append("tr");
+       headLine.selectAll("th").data(headlineData)//supplies data
+             .enter()
+             .append("th")
+             .attr("class","valDescription")// set class for CSS
+             .text(function(d){return d;});//Add text
+       var tbody = table.selectAll("tbody").data(_data).enter().append("tbody")
+       var dataLine = tbody.append("tr");
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["date"];});
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["time"];});
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["priority"];});    
+       let tickLabels = [];
+       for(i=0;i<Object.keys(_data).length;i++)
+       {
+           tickLabels.push("appointments " + (i+1).toString());
+       }
+  });
 }
 
-function getData(){console.log(dataLink);
-    d3.json(dataLink).then(function(data){
-        _data = data;
-        drawDataTable();
-        let tickLabels = [];
-        for(i=0;i<Object.keys(_data).length;i++)
-        {
-            tickLabels.push("Asset " + (i+1).toString());
-		}
-      console.log(data);
-    });
-}
-function drawDataTable(){
-    d3.select("#dataDIV").select("#dataTable").remove();
-    var _assets = Object.keys(_data);
-    var headlineData = ["Next Case Starts in","Priority","Client","Case type","Case file", "Court", "Approx. Duration"];
-    var table = d3.select("#dataDIV").append("table").attr("id","dataTable");
-    var headLine = table.append("thead").append("tr");
-        headLine.selectAll("th").data(headlineData)//supplies data
-                .enter()
-                .append("th")
-                .attr("class","valDescription")// set class for CSS
-                .text(function(d){return d;});//Add text   
-    var tbody = table.selectAll("tbody").data(_assets).enter().append("tbody");
-    var dataLine = tbody.append("tr");
-    //dataLine.append("td").attr("class","tdLeft").text(function(d,i){return d;});
-    dataLine.append("td").attr("class","tdLeft").text(function(d){return _data[d]["workload"];});
-    dataLine.append("td").attr("class","tdRight").text(function(d){return _data[d]["priority"];});
-    dataLine.append("td").attr("class","tdLeft").text(function(d){return _data[d]["client"];});
-    dataLine.append("td").attr("class","tdLeft").text(function(d){return _data[d][""];});
-    dataLine.append("td").attr("class","tdLeft").text(function(d){return _data[d]["preparation_done"];});
-    dataLine.append("td").attr("class","tdLeft").text(function(d){return _data[d]["place"];});
-    dataLine.append("td").attr("class","tdLeft").text(function(d){return _data[d]["time"];});
+function getClients(){
+  d3.json('http://127.0.0.1:3000/getClients', {
+    method:"POST",
+    body: JSON.stringify({
+      user: document.getElementById("user").value,
+      client: document.getElementById("client").value
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+  .then(function(data){
+       console.log(data);
+       let htmlTag = d3.select('#clientsData');
+       htmlTag.select("#dataTable").remove();
+       var table = d3.select("#clientsData").append("table").attr("id","dataTable");
+       var headlineData = ['1','2','3','4'];
+       var headLine = table.append("thead").append("tr");
+       headLine.selectAll("th").data(headlineData)//supplies data
+             .enter()
+             .append("th")
+             .attr("class","valDescription")// set class for CSS
+             .text(function(d){return d;});//Add text
+       var tbody = table.selectAll("tbody").data(_data).enter().append("tbody")
+       var dataLine = tbody.append("tr");
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["date"];});
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["time"];});
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["priority"];});    
+       let tickLabels = [];
+       for(i=0;i<Object.keys(_data).length;i++)
+       {
+           tickLabels.push("appointments " + (i+1).toString());
+       }
+  });
 }
 
 var currentDate = new Date();

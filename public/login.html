@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css" type="text/css">
-        <script src="d3.js"></script>
-        <script src="script.js"></script>
-        <script src="main-script.js"></script>
+        <script src="login.js"></script>
     <title>Log In</title>
 </head>
 <body>
@@ -37,12 +35,12 @@
             <div id="form">
                     <div>
                         <label><h3>Username</h3></label>
-                        <input id="user" type="text" name="user" placeholder="Enter username">
+                        <input id="user" type="text" placeholder="Enter username">
                     </div>
                     <br>
                     <div>
                         <label><h3>Password</h3></label>
-                        <input type="text" name="password" placeholder="Enter password">
+                        <input id="password" type="password" placeholder="Enter password">
                     </div>
                     <br>
                     <input type="button" value="Log in" onclick="login()">

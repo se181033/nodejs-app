@@ -17,8 +17,7 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="meetings.html">Meetings</a></li>
-                        <li><a href="clients.html">Clients</a></li>
-                        <li><a href="myTasks.html">Tasks</a></li>
+                        <li><a href="clients.html">Clients</a></li>     
                         <li><a href="login.html">Log out</a></li>
                     </ul>          
                 </div>
@@ -35,13 +34,23 @@
                 <div class="logo">
                     <h1>Meetings</h1>
                 </div>
+                <div class="datainput">
+                    <h3>Type in Userid for cases:</h3>
+                    <input name="user" id="user" type="text" placeholder="Enter Userid">
+                    <input type="button" value="UserID" onclick="getMeetings()">
+                </div>
             </nav>
         </div>
-        <div id="showcase"></div>  
-        <div class="content-wrapper">
-            <div id="rectangle"></div>
+         
+        <div id="rectangle">
+            <header>
+                <div><h1>Meetings Listing </h1></div>
+            </header>
+            <svg id="barChart"></svg>
+            <div id="dataDIV"></div>
+            <div id="meetingsData"> </div>
+        </div> 
         </div>
-    </div>
     <footer>
         <p>Copyright &copy; 2020 BSE18 Docket</p>
     </footer> 

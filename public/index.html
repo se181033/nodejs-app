@@ -6,8 +6,7 @@
         <link rel="stylesheet" href="styles.css" type="text/css">
         <script src="d3.js"></script>
         <script src="script.js"></script>
-        
-        <script src="main-script.js"></script>
+        <!--<script src="main-script.js"></script> -->
     </head>
     <body>
         <div class="main">
@@ -18,7 +17,6 @@
                             <li><a href="index.html">Home</a></li>
                             <li><a href="meetings.html">Meetings</a></li>
                             <li><a href="clients.html">Clients</a></li>
-                            <li><a href="myTasks.html">Tasks</a></li>
                             <li><a href="login.html">Log out</a></li>
                         </ul>          
                     </div>
@@ -35,54 +33,23 @@
                     <div class="logo">
                         <h1>BSE18 Docket</h1>
                     </div>
+                    <div class="datainput">
+                        <h3>Type in Userid for cases:</h3>
+                        <input id="user" type="text" placeholder="Enter Userid">
+                        <input type="button" value="UserID" onclick="getnextMeeting()">
+                    </div>
                 </nav>
             </div>
-            <div id="showcase">
+            <div id="rectangle">
                 <header>
                     <div><h1>Termin Übersicht vom heutigen Tag</h1></div>
                 </header>
+                <svg id="barChart"></svg>
+                <div id="dataDIV"></div>
+                <div id="dailyData"> </div>
             </div>
-                <content-wrapper>
-                    <script src="script.js"></script>
-                    <div id="rectangle">
-                    <svg id="barChart"></svg>
-                    <div id="dataDIV"></div>
-
-                        <div class="features one">
-                            <img src="next.png">
-                            <div><h2>Next Case Starts in</h2></div>
-                        </div>
-                        
-                        <div class="features two">
-                            <img src="next.png">
-                            <div><h2>Priority</h2></div>
-                        </div>
-
-                        <div class="features three">
-                            <img src="next.png">
-                            <div><h2>Client</h2></div>
-                        </div>
-                        
-                        <div class="features four">
-                            <img src="next.png">
-                            <div><h2>Case Type</h2></div>
-                        </div>
-                        <div class="features five">
-                            <img src="next.png">
-                            <div><h2>Case File</h2></div>
-                        </div>
-                        <div class="features six">
-                            <img src="next.png">
-                            <div><h2>Court</h2></div>
-                        </div>
-                        <div class="features seven">
-                            <img src="next.png">
-                            <div><h2>Approx. Duration</h2></div>
-                        </div>
-                    </div>
-                </div>
-            </content-wrapper> 
         </div>
+                
         <footer>
             <p>Copyright &copy; 2020 BSE18 Docket</p>
         </footer> 

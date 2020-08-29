@@ -17,7 +17,6 @@ const connection = mysql.createConnection({
 
 var currentDate = new Date();
 
-
 app.post('/getMeetings', function (req, res) {
     connection.query(
         'SELECT * FROM `appointments` WHERE `nameid` = ?', 
@@ -26,50 +25,7 @@ app.post('/getMeetings', function (req, res) {
           if (err != null) {
               console.log(err);
           }
-          //var returnValue = [];
           var returnValue = results;
-  
-          /*for (var i = 0; i < results.length; i++) {
-              returnValue.push({
-                  id: results[i].id,
-                  date: results[i].date,
-                  time: results[i].time,
-                  priority: results[i].priority,
-                  client: results[i].client,
-                  place: results[i].place,
-                  workload: results[i].workload,
-                  preperation_done: results[i].preperation_done
-              });
-          }*/
-  
-          res.send(returnValue);
-        }
-      );
-  });
-  app.get('/getMeeting', function (req, res) {
-    connection.query(
-        'SELECT * FROM `appointments` WHERE `nameid` = ?', 
-        ['LukKa'],
-        function(err, results, fields) {
-          if (err != null) {
-              console.log(err);
-          }
-          //var returnValue = [];
-          var returnValue = results;
-  
-          /*for (var i = 0; i < results.length; i++) {
-              returnValue.push({
-                  id: results[i].id,
-                  date: results[i].date,
-                  time: results[i].time,
-                  priority: results[i].priority,
-                  client: results[i].client,
-                  place: results[i].place,
-                  workload: results[i].workload,
-                  preperation_done: results[i].preperation_done
-              });
-          }*/
-  
           res.send(returnValue);
         }
       );
@@ -83,22 +39,7 @@ app.post('/getClients', function (req, res) {
 		  if (err != null) {
 			  console.log(err);
 		  }
-		  //var returnValue = [];
 		  var returnValue = results;
-  
-		  /*for (var i = 0; i < results.length; i++) {
-			  returnValue.push({
-				  id: results[i].id,
-				  date: results[i].date,
-				  time: results[i].time,
-				  priority: results[i].priority,
-				  client: results[i].client,
-				  place: results[i].place,
-				  workload: results[i].workload,
-				  preperation_done: results[i].preperation_done
-			  });
-		  }*/
-  
 		  res.send(returnValue);
 		}
 	  );
@@ -117,8 +58,7 @@ app.post('/nextMeeting', function (req, res) {
 			  name: req.body.user,
 			  appointments: []
 		  };
-		}
-	  );
-  });
+		});
+});
  
 app.listen(3000);

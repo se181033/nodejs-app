@@ -27,6 +27,17 @@ body{
     display: grid;
     grid-template-columns: 1fr;
 }
+.date{
+    padding: 20px;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: right;
+}
+.datainput{
+    flex: 0.5;
+    text-align: right;
+}
+
 nav{
     
     width: 80%;
@@ -38,7 +49,7 @@ nav{
     
 }
 .logo{
-    flex: 1;
+    flex: 0.5;
     text-align: right;
     text-transform: uppercase;
 }
@@ -84,18 +95,19 @@ nav{
 }
 
 #rectangle{
-    position: sticky;
-    margin: 0px;
-    z-index: 1;
-    display: flex;
     width: 100%;
-    height: 400px;
-    transform: translate(0%);
+    padding: 0;
+    margin: auto;
     background: #ccc;
-    top: 50px;
-    right: 0px;
-    
+    background-position: center right;
+    min-height: 600px;
+    margin-top: 50px;
+    text-align: center;
+
 }
+#rectangle header{
+    color: cornsilk;
+} 
 .features img{width: 30px;}
 .features{
     justify-content: space-between;
@@ -119,12 +131,7 @@ nav{
     transform: translateY(100%);
     z-index: 1;
 }
-.date{
-    padding: 20px;
-    font-size: 24px;
-    font-weight: 400;
-    text-align: right;
-}
+
 a:hover{color: blue;}
 #form{
     padding: 20px;
@@ -198,7 +205,9 @@ footer{
     white-space: nowrap;
     border-collapse: collapse; 
   }
+
   /*##### Ende #####*/
-  
+
+
  
     
