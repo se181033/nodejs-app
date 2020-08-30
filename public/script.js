@@ -16,24 +16,25 @@ function getnextMeeting(){
         
         let htmlTag = d3.select('#dailyData');
         htmlTag.select("#dataTable").remove();
-        var headlineData = ["Next case starts in","Priority","Client","Case Type", "Preparation", "court","Approx. Duration"];
+        var headlineData = ["Next case starts at","Priority","Client","Case Type", "Preparation", "court","Approx. Duration"];
         var table = d3.select("#dailyData").append("table").attr("id","dataTable");
         var headLine = table.append("thead").append("tr");
         headLine.selectAll("th").data(headlineData)//supplies data
               .enter()
               .append("th")
-              .attr("class","valDescription")// set class for CSS
+              .attr("class","headline")// set class for CSS
               .text(function(d){return d;});//Add text
-        var tbody = table.selectAll("tbody").data(_data).enter().append("tbody").attr("class", "features");
+        var tbody = table.selectAll("tbody").data(_data).enter().append("tbody")
         var dataLine = tbody.append("tr");
-        dataLine.append("td").attr("class","features one").text(function(d){return d["priority"];});
-        dataLine.append("td").attr("class","features two").text(function(d){return d["time"];});
-        dataLine.append("td").attr("class","features three").text(function(d){return d["client"];});
-        dataLine.append("td").attr("class","features four").text(function(d){return d["type"];});
-        dataLine.append("td").attr("class","features five").text(function(d){return d["preparation_done"];});
-        dataLine.append("td").attr("class","features six").text(function(d){return d["place"];});
-        dataLine.append("td").attr("class","features seven").text(function(d){return d["workload"];}); 
-    });
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["time"];});
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["priority"];});
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["client"];});
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["type"];});
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["preparation_done"];});
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["place"];});
+        dataLine.append("td").attr("class","tdLeft").text(function(d){return d["workload"];});
+        
+      });
   }
 
 function getMeetings(){
@@ -57,18 +58,13 @@ function getMeetings(){
        headLine.selectAll("th").data(headlineData)//supplies data
              .enter()
              .append("th")
-             .attr("class","valDescription")// set class for CSS
+             .attr("class","headline")// set class for CSS
              .text(function(d){return d;});//Add text
        var tbody = table.selectAll("tbody").data(_data).enter().append("tbody")
        var dataLine = tbody.append("tr");
        dataLine.append("td").attr("class","tdleft").text(function(d){return d["date"];});
        dataLine.append("td").attr("class","tdleft").text(function(d){return d["time"];});
        dataLine.append("td").attr("class","tdleft").text(function(d){return d["priority"];});    
-       let tickLabels = [];
-       for(i=0;i<Object.keys(_data).length;i++)
-       {
-           tickLabels.push("appointments " + (i+1).toString());
-       }
   });
 }
 
@@ -93,19 +89,14 @@ function getClients(){
        headLine.selectAll("th").data(headlineData)//supplies data
              .enter()
              .append("th")
-             .attr("class","valDescription")// set class for CSS
+             .attr("class","headline")// set class for CSS
              .text(function(d){return d;});//Add text
        var tbody = table.selectAll("tbody").data(_data).enter().append("tbody")
        var dataLine = tbody.append("tr");
-       dataLine.append("td").attr("class","tdleft").text(function(d){return d["date"];});
+       dataLine.append("td").attr("class","tdleft").text(function(d){return d["client"];});
        dataLine.append("td").attr("class","tdleft").text(function(d){return d["time"];});
        dataLine.append("td").attr("class","tdleft").text(function(d){return d["priority"];});    
-       let tickLabels = [];
-       for(i=0;i<Object.keys(_data).length;i++)
-       {
-           tickLabels.push("appointments " + (i+1).toString());
-       }
-  });
+    });
 }
 
 var currentDate = new Date();

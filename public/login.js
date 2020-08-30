@@ -13,7 +13,7 @@ function login(){
 
     dbusers.forEach(element => {
       if(element == name && dbpw[count] == password){
-        location = ("index.html");
+        location = ("home.html");
       }
       else
         count++;
